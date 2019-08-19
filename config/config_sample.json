@@ -1,0 +1,17 @@
+//Don't forget to change file name to "config.json"
+
+{
+	"vk": {
+		"token": ""
+	},
+	"google": {
+		"documentID": "",
+		"token": { 
+			"access_token": "",
+			"refresh_token": "",
+			"scope": "https://www.googleapis.com/auth/documents",
+			"token_type": "",
+			"expiry_date": 
+		}
+	}
+}

@@ -1,0 +1,12 @@
+#Ignoring transpiles code
+google_api_lib/
+
+vk_api_lib/
+
+index_lib.js
+
+#Ignoring packages
+node_modules/
+
+#Ignoring personal tokens
+config.json

@@ -1,0 +1,22 @@
+{
+  "name": "VKStatusApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build_vk": "babel vk_api vk_api_lib --presets es2015",
+    "build_google": "babel google_api google_api_lib --presets es2015",
+    "build_index": "babel index.js index_lib.js --presets es2015"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nconf": "^0.10.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
