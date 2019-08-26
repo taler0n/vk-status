@@ -1,14 +1,14 @@
-import nconf from 'nconf';
+import fs from 'fs';
 
-nconf.env().argv().file('./config/config.json');
+const userData = JSON.parse(fs.readFileSync('./config/config.json'));
 
 export const config = {
 	vk: {
-		token: nconf.get('vk:token')
+		token: userData.vk.token
 	},
 	google: {
-		documentID: nconf.get('google:documentID'),
-		token: nconf.get('google:token')
+		documentID: userData.token.documentID,
+		token: userData.google.token
 	},
 	interval: 2000
 }
