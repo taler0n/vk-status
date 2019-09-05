@@ -1,23 +1,24 @@
 import {config} from '../config/config';
 import {google} from 'googleapis';
 
-export function accessDocument(text){
+export function accessDocument(newStatus){
 	fs.readFile('credentials.json', (err, content) => {
   		if (err) {
   			return console.log('Error loading client secret file:', err);
   		}
-  		authorize(JSON.parse(content), printStatus, text);
+  		const oAuth2Client = authorize(JSON.parse(content));
+  		printStatus(oAuth2Client, newStatus);
 	});
 }
 
-function authorize(credentials, callback, text) {
+function authorize(credentials) {
   	const {client_secret, client_id, redirect_uris} = credentials.installed;
   	const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
   	oAuth2Client.setCredentials(JSON.parse(config.google.token));
-  	callback(oAuth2Client, text);
+  	return oAuth2Client;
 }
 
-function printStatus(auth, text) {
+function printStatus(auth, newStatus) {
 	const time = new Date();
   	const docs = google.docs({version: 'v1', auth});
   	const updateObject = {
@@ -25,7 +26,7 @@ function printStatus(auth, text) {
     resource: {
       requests: [{
         insertText: {
-          text: `${time.getMinutes()}:${time.getHours()} ${time.getDate()}.${time.getMonth()}.${time.getFullYear()} ${text}\n`,
+          text: `${time.getMinutes()}:${time.getHours()} ${time.getDate()}.${time.getMonth()}.${time.getFullYear()} ${newStatus}\n`,
           location: {
             index: 1,
         	},
