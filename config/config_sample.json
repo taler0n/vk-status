@@ -13,5 +13,6 @@
 			"token_type": "",
 			"expiry_date": 
 		}
-	}
+	},
+	"loggers": [ "google", "console" ]
 }

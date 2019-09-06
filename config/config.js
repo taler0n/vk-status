@@ -7,8 +7,13 @@ export const config = {
 		token: userData.vk.token
 	},
 	google: {
-		documentID: userData.token.documentID,
-		token: userData.google.token
+		documentID: userData.google.documentID,
+		token: userData.google.token,
+		pathToLogger: './loggers/google/google.js'
 	},
-	interval: 2000
+	console: {
+		pathToLogger: './loggers/console/console.js'
+	},
+	loggers: userData.loggers,
+	statusCheckInterval: 2000
 }
