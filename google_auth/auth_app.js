@@ -1,4 +1,5 @@
 require('fs');
+require('readline');
 require('googleapis');
 require('babel-register')({
     presets: ['babel-preset-env'],
@@ -6,4 +7,4 @@ require('babel-register')({
 });
 require('babel-polyfill');
 
-require('./index.js');
+require('./google_auth.js');

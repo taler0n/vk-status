@@ -1,17 +1,16 @@
-import {config} from './config/config';
-import accessDocument from './google_api';
-import accessVKStatus from './vk_api';
+import {config} from './config/config.js';
+import accessVKStatus from './vk_api/vk_api.js';
+import log from './log_manager.js';
 
 let currentStatus = "";
 
 const iterate = function(){
 	const newStatus = accessVKStatus(currentStatus);
 
-	if (newStatus){
-		console.log(newStatus);
+	if (newStatus != currentStatus){
 		currentStatus = newStatus;
-		accessDocument(newStatus);
+		log(currentStatus);
 	}
 }
 
-setInterval(iterate, config.interval);
+setInterval(iterate, config.statusCheckInterval);
